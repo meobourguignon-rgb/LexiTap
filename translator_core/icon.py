@@ -113,3 +113,22 @@ def apply_window_icon(window: Any) -> None:
         setattr(window, "_translater_icon", photo)
     except Exception:  # noqa: BLE001
         LOGGER.debug("iconphoto недоступен", exc_info=True)
+        return
+
+    # CTkToplevel через 200 мс после создания безусловно ставит свою иконку
+    # CustomTkinter (синяя «C») в заголовок, перебивая значок приложения.
+    # Возвращаем свою иконку после этого колбэка.
+    def _restore() -> None:
+        try:
+            if not window.winfo_exists():
+                return
+            if path is not None:
+                window.iconbitmap(str(path))
+            window.iconphoto(True, photo)
+        except Exception:  # noqa: BLE001 - окно могло уже закрыться
+            LOGGER.debug("Не удалось вернуть значок окна", exc_info=True)
+
+    try:
+        window.after(300, _restore)
+    except Exception:  # noqa: BLE001
+        LOGGER.debug("after недоступен для значка окна", exc_info=True)

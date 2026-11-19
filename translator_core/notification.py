@@ -26,7 +26,6 @@ BG = "#2b2b2b"
 SURFACE = "#272727"
 BORDER = "#565b5e"
 ACCENT = "#6366f1"
-ACCENT_PRESSED = "#4e50bd"
 ACCENT_HOVER = "#4f46e5"
 TEXT = "#ffffff"
 MUTED = "#dce4ee"
@@ -181,11 +180,9 @@ class ToastWindow:
             height=28,
             corner_radius=6,
             fg_color=ACCENT,
-            pressed_color=ACCENT_PRESSED,
             hover_color=ACCENT_HOVER,
             text_color=TEXT,
             font=_font(14, "bold"),
-            full_circle=True,
         )
         close_button.pack(side="right")
 

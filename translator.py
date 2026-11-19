@@ -57,8 +57,6 @@ class MainWindow(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("Translater")
-        ctk.register_project_fonts(self, Path(__file__).resolve().parent / "assets" / "fonts")
-        self.title("Translater")
         self.geometry("800x600")
         self._script_0 = ButtonSettingsPy()
         self._script_1 = HomePy()
@@ -107,9 +105,8 @@ class MainWindow(ctk.CTk):
             border_color='#efefef',
             text='Home',
             text_color='#ffffff',
-            full_circle=True,
             fg_color='#6366f1',
-            pressed_color='#4e50bd',
+            hover_color='#4e50bd',
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
             image=ctk.CTkImage(light_image=Image.open(_asset('house.png')), dark_image=Image.open(_asset('house.png')), size=(20, 20)),
             command=self._script_1.open_main,
@@ -125,9 +122,8 @@ class MainWindow(ctk.CTk):
             border_color='#efefef',
             text='Settings',
             text_color='#ffffff',
-            full_circle=True,
             fg_color='#6366f1',
-            pressed_color='#4e50bd',
+            hover_color='#4e50bd',
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
             image=ctk.CTkImage(light_image=Image.open(_asset('monitor-cog.png')), dark_image=Image.open(_asset('monitor-cog.png')), size=(20, 20)),
             command=self._script_2.open_settings,
@@ -143,9 +139,8 @@ class MainWindow(ctk.CTk):
             border_color='#efefef',
             text='Exit',
             text_color='#ffffff',
-            full_circle=True,
             fg_color='#6366f1',
-            pressed_color='#4e50bd',
+            hover_color='#4e50bd',
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
             image=ctk.CTkImage(light_image=Image.open(_asset('door-open.png')), dark_image=Image.open(_asset('door-open.png')), size=(20, 20)),
             command=self._script_3.exit_app,
@@ -178,21 +173,11 @@ class MainWindow(ctk.CTk):
             self.departments,
             width=110,
             corner_radius=0,
-            border_width=0,
-            border_color='#565b5e',
-            padx=0,
-            pady=0,
-            cursor='',
-            takefocus=False,
             fg_color='transparent',
             text='Hello, World!',
-            font_wrap=True,
-            justify='center',
             text_color='#ffffff',
             text_color_disabled='#a0a0a0',
             compound='left',
-            full_circle=True,
-            unified_bind=True,
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
         )
         self.label_4.place(x=10, y=18)
@@ -202,22 +187,14 @@ class MainWindow(ctk.CTk):
             width=386,
             height=403,
             corner_radius=0,
-            border_width=0,
-            border_color='#565b5e',
-            padx=0,
-            pady=0,
-            cursor='',
-            takefocus=False,
             fg_color='transparent',
             bg_color='#6366f1',
             text='Translater - это быстрый переводчик текста прямо в приложениях.\n\nСкройте окно в трей, чтобы переводчик продолжал работать в фоне. Для перевода нужен интернет.',
-            font_wrap=True,
-            justify='center',
             text_color='#ffffff',
             text_color_disabled='#a0a0a0',
             compound='left',
-            full_circle=True,
-            unified_bind=True,
+            justify='left',
+            wraplength=356,
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="bold", slant="roman", underline=True),
         )
         self.label_6.place(x=143, y=16)
@@ -273,9 +250,8 @@ class Settings(ctk.CTkToplevel):
             border_color='#efefef',
             text='Home',
             text_color='#ffffff',
-            full_circle=True,
             fg_color='#6366f1',
-            pressed_color='#4e50bd',
+            hover_color='#4e50bd',
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
             image=ctk.CTkImage(light_image=Image.open(_asset('house.png')), dark_image=Image.open(_asset('house.png')), size=(20, 20)),
             command=self._script_0.open_main,
@@ -291,9 +267,8 @@ class Settings(ctk.CTkToplevel):
             border_color='#efefef',
             text='Settings',
             text_color='#ffffff',
-            full_circle=True,
             fg_color='#6366f1',
-            pressed_color='#4e50bd',
+            hover_color='#4e50bd',
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
             image=ctk.CTkImage(light_image=Image.open(_asset('monitor-cog.png')), dark_image=Image.open(_asset('monitor-cog.png')), size=(20, 20)),
             command=self._script_1.open_settings,
@@ -309,9 +284,8 @@ class Settings(ctk.CTkToplevel):
             border_color='#efefef',
             text='Exit',
             text_color='#ffffff',
-            full_circle=True,
             fg_color='#6366f1',
-            pressed_color='#4e50bd',
+            hover_color='#4e50bd',
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
             image=ctk.CTkImage(light_image=Image.open(_asset('door-open.png')), dark_image=Image.open(_asset('door-open.png')), size=(20, 20)),
             command=self._script_2.exit_app,
@@ -344,21 +318,11 @@ class Settings(ctk.CTkToplevel):
             self.frame_2,
             width=110,
             corner_radius=0,
-            border_width=0,
-            border_color='#565b5e',
-            padx=0,
-            pady=0,
-            cursor='',
-            takefocus=False,
             fg_color='transparent',
             text='Hello, World!',
-            font_wrap=True,
-            justify='center',
             text_color='#ffffff',
             text_color_disabled='#a0a0a0',
             compound='left',
-            full_circle=True,
-            unified_bind=True,
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
         )
         self.label_1.place(x=10, y=18)
@@ -367,22 +331,12 @@ class Settings(ctk.CTkToplevel):
             self.frame_1,
             width=348,
             corner_radius=0,
-            border_width=0,
-            border_color='#565b5e',
-            padx=0,
-            pady=0,
-            cursor='',
-            takefocus=False,
             fg_color='transparent',
             bg_color='#6366f1',
             text='Звук уведомлений',
-            font_wrap=True,
-            justify='center',
             text_color='#ffffff',
             text_color_disabled='#a0a0a0',
             compound='left',
-            full_circle=True,
-            unified_bind=True,
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
         )
         self.label_3.place(x=135, y=15)
@@ -407,22 +361,12 @@ class Settings(ctk.CTkToplevel):
             self.frame_1,
             width=348,
             corner_radius=0,
-            border_width=0,
-            border_color='#565b5e',
-            padx=0,
-            pady=0,
-            cursor='',
-            takefocus=False,
             fg_color='transparent',
             bg_color='#6366f1',
             text='Автоотправка (Enter)',
-            font_wrap=True,
-            justify='center',
             text_color='#ffffff',
             text_color_disabled='#a0a0a0',
             compound='left',
-            full_circle=True,
-            unified_bind=True,
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
         )
         self.label_4.place(x=135, y=62)
@@ -447,22 +391,12 @@ class Settings(ctk.CTkToplevel):
             self.frame_1,
             width=348,
             corner_radius=0,
-            border_width=0,
-            border_color='#565b5e',
-            padx=0,
-            pady=0,
-            cursor='',
-            takefocus=False,
             fg_color='transparent',
             bg_color='#6366f1',
             text='Подсказка при запуске',
-            font_wrap=True,
-            justify='center',
             text_color='#ffffff',
             text_color_disabled='#a0a0a0',
             compound='left',
-            full_circle=True,
-            unified_bind=True,
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
         )
         self.label_6.place(x=135, y=115)
@@ -496,24 +430,17 @@ class Settings(ctk.CTkToplevel):
 
         self.label_9 = ctk.CTkLabel(
             self.frame_1,
-            width=224,
+            width=240,
+            height=28,
             corner_radius=0,
-            border_width=0,
-            border_color='#565b5e',
-            padx=0,
-            pady=0,
-            cursor='',
-            takefocus=False,
             fg_color='transparent',
             bg_color='#6366f1',
             text='Переводит выделенный текст',
-            font_wrap=True,
-            justify='center',
             text_color='#ffffff',
             text_color_disabled='#a0a0a0',
             compound='left',
-            full_circle=True,
-            unified_bind=True,
+            justify='left',
+            wraplength=220,
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
         )
         self.label_9.place(x=135, y=200)
@@ -527,73 +454,55 @@ class Settings(ctk.CTkToplevel):
             border_color='#efefef',
             text='CTRL + ALT + HOME',
             text_color='#ffffff',
-            full_circle=True,
             fg_color='#6366f1',
-            pressed_color='#4e50bd',
+            hover_color='#4e50bd',
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
         )
-        self.button_4.place(x=371, y=200)
+        self.button_4.place(x=381, y=200)
 
         self.label_10 = ctk.CTkLabel(
             self.frame_1,
-            width=224,
+            width=240,
+            height=44,
             corner_radius=0,
-            border_width=0,
-            border_color='#565b5e',
-            padx=0,
-            pady=0,
-            cursor='',
-            takefocus=False,
             fg_color='transparent',
             bg_color='#6366f1',
             text='Переводит выделенный текст на английский и отправляет его',
-            font_wrap=True,
-            justify='center',
             text_color='#ffffff',
             text_color_disabled='#a0a0a0',
             compound='left',
-            full_circle=True,
-            unified_bind=True,
+            justify='left',
+            wraplength=240,
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
         )
         self.label_10.place(x=135, y=243)
 
         self.button_5 = ctk.CTkButton(
             self.frame_1,
-            height=53,
+            width=126,
+            height=28,
             corner_radius=0,
             border_width=0,
             border_color='#efefef',
             text='CTRL + ALT + END',
             text_color='#ffffff',
-            full_circle=True,
             fg_color='#6366f1',
-            pressed_color='#4e50bd',
+            hover_color='#4e50bd',
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
         )
-        self.button_5.place(x=371, y=243)
+        self.button_5.place(x=381, y=251)
 
         self.label_12 = ctk.CTkLabel(
             self.frame_1,
             width=373,
             height=94,
             corner_radius=0,
-            border_width=0,
-            border_color='#565b5e',
-            padx=0,
-            pady=0,
-            cursor='',
-            takefocus=False,
             fg_color='transparent',
             bg_color='#6366f1',
             text='Нажмите на сочетание, чтобы изменить его.\nEsc — отменить изменение.',
-            font_wrap=True,
-            justify='center',
             text_color='#ffffff',
             text_color_disabled='#a0a0a0',
             compound='left',
-            full_circle=True,
-            unified_bind=True,
             font=ctk.CTkFont(family='Cascadia Code SemiBold', size=13, weight="normal", slant="roman"),
         )
         self.label_12.place(x=135, y=309)
@@ -763,15 +672,18 @@ class TranslatorApp:
             return
         while True:
             try:
-                kind, payload = self._events.get_nowait()
+                event = self._events.get_nowait()
             except queue.Empty:
                 break
-            self._handle_event(kind, payload)
+            try:
+                self._handle_event(event[0], event[1:])
+            except Exception:  # noqa: BLE001 - одно событие не должно останавливать цикл
+                LOGGER.exception("Ошибка обработки события %r", event[0])
         self._after_id = self.root.after(self.POLL_MS, self._poll_events)
 
-    def _handle_event(self, kind: str, payload: Any) -> None:
+    def _handle_event(self, kind: str, payload: tuple[Any, ...]) -> None:
         if kind == "hotkey":
-            action = str(payload)
+            action = str(payload[0])
             if action == "quit":
                 self.quit()
             elif action in ("to_russian", "to_english"):
@@ -779,7 +691,7 @@ class TranslatorApp:
         elif kind == "translated":
             self._on_translated(*payload)
         elif kind == "error":
-            self._show_error(str(payload))
+            self._show_error(str(payload[0]))
 
     # ------------------------------------------------------------ перевод
 
@@ -1010,7 +922,14 @@ class TranslatorApp:
             except Exception:  # noqa: BLE001 - окно могло уже закрыться
                 pass
         LOGGER.info("Translater остановлен")
-        self.root.destroy()
+        try:
+            self.root.destroy()
+        except Exception:  # noqa: BLE001 - выход не должен зависеть от ошибок виджетов
+            LOGGER.exception("Ошибка при закрытии окна, завершаем принудительно")
+            try:
+                self.root.quit()
+            except Exception:  # noqa: BLE001
+                pass
 
 
 if __name__ == "__main__":
