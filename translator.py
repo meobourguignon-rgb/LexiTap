@@ -56,6 +56,7 @@ def _asset(name: str) -> str:
 class MainWindow(ctk.CTk):
     def __init__(self):
         super().__init__()
+        self.title("Translater")
         ctk.register_project_fonts(self, Path(__file__).resolve().parent / "assets" / "fonts")
         self.title("Translater")
         self.geometry("800x600")
