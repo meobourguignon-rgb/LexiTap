@@ -1,0 +1,5 @@
+# Зависимости для запуска и сборки Translater
+ctkmaker-core>=5.5.1
+pillow>=10.0
+pystray>=0.19.5
+pyinstaller>=6.6

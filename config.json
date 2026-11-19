@@ -1,0 +1,28 @@
+{
+  "hotkeys": {
+    "to_russian": "ctrl+alt+home",
+    "to_english": "ctrl+alt+end",
+    "quit": "ctrl+alt+q"
+  },
+  "toast": {
+    "size": 400,
+    "margin": 24,
+    "duration_seconds": 8,
+    "max_source_chars": 220
+  },
+  "translation": {
+    "timeout_seconds": 8,
+    "max_chars": 2000,
+    "providers": [
+      "google",
+      "mymemory"
+    ],
+    "auto_send": true
+  },
+  "sound": {
+    "enabled": true,
+    "notify_file": "notify.wav",
+    "error_file": "error.wav"
+  },
+  "show_startup_hint": true
+}

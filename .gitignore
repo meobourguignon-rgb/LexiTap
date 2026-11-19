@@ -1,0 +1,30 @@
+# Локальное окружение и кэш
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Сборка PyInstaller
+build/
+dist/
+*.spec
+Translater.exe
+
+# Журналы и временные файлы
+logs/
+*.log
+*.tmp
+*.bak
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Служебные файлы инструментов
+.freebuff/
+
+# IDE
+.idea/
+.vscode/
+*.sublime-workspace
