@@ -141,10 +141,12 @@ Default configuration:
 
 ```text
 portable-translator/
-├── translator.py          # Entry point: CTkMaker UI and logic controller
+├── translator.py          # Entry point: theme setup and app startup
 ├── ctkmaker.py            # Base CTkScript class for behavior scripts
 ├── scripts/               # Home, Settings, and Exit button behavior
 ├── translator_core/
+│   ├── app.py             # Controller: events, hotkeys, tray, translations
+│   ├── ui.py              # CTkMaker screens (MainWindow, Settings)
 │   ├── clipboard.py       # Clipboard operations via Win32 SendInput
 │   ├── config.py          # Configuration loading and validation
 │   ├── hotkeys.py         # Global hotkeys using RegisterHotKey

@@ -36,6 +36,8 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "enabled": True,
         "notify_file": "notify.wav",
         "error_file": "error.wav",
+    "theme_rainbow": False,
+    "theme_rainbow_enabled": False,
     },
     "show_startup_hint": True,
 }
