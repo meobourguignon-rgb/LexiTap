@@ -10,6 +10,7 @@ from __future__ import annotations
 import html
 import json
 import logging
+import re
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -27,6 +28,7 @@ MYMEMORY_ENDPOINT = "https://api.mymemory.translated.net/get"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) PortableTranslator/1.0"
 MYMEMORY_LIMIT = 480
 CACHE_LIMIT = 64
+_PARAGRAPHS = re.compile(r"\n\s*\n")
 
 
 class TranslationError(RuntimeError):
@@ -134,6 +136,25 @@ class Translator:
             self._cache.move_to_end(key)
             return replace(cached, truncated_input=cached.truncated_input or truncated)
 
+        blocks = [block for block in _PARAGRAPHS.split(prepared) if block.strip()]
+        if len(blocks) <= 1:
+            result = self._translate_block(prepared, target)
+        else:
+            parts = [self._translate_block(block, target) for block in blocks]
+            result = Translation(
+                text="\n\n".join(part.text for part in parts),
+                source_language=parts[0].source_language,
+                provider=parts[0].provider,
+                truncated_input=any(part.truncated_input for part in parts),
+            )
+
+        result = replace(result, truncated_input=result.truncated_input or truncated)
+        self._cache[key] = result
+        if len(self._cache) > CACHE_LIMIT:
+            self._cache.popitem(last=False)
+        return result
+
+    def _translate_block(self, text: str, target: str) -> Translation:
         problems: list[str] = []
         for name in self._config.providers:
             provider = _PROVIDERS.get(name)
@@ -141,16 +162,9 @@ class Translator:
                 problems.append(f"{name}: неизвестный сервис")
                 continue
             try:
-                result = provider(prepared, target, self._config.timeout_seconds)
+                return provider(text, target, self._config.timeout_seconds)
             except TranslationError as exc:
                 problems.append(f"{name}: {exc}")
                 LOGGER.warning("Провайдер %s не сработал: %s", name, exc)
-                continue
-
-            result = replace(result, truncated_input=result.truncated_input or truncated)
-            self._cache[key] = result
-            if len(self._cache) > CACHE_LIMIT:
-                self._cache.popitem(last=False)
-            return result
 
         raise TranslationError("; ".join(problems) or "нет доступных сервисов перевода")
